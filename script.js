@@ -15,19 +15,23 @@ function ativandoInput() {
     function inserindoNome(nome) {
         lista.push(nome) // insere o novo nome no array
         renderiza()
-        
-        console.log(lista);
     }
 
     function novoNome(valorAtualizado) {
         lista[indexAtual] = valorAtualizado // atribui novo valor no mesmo indice do array
         
     }
+    function verificaCampo(valor) {
+       if( valor.trim()){ // 
+          
+            return true
+       }
+       return false
+    }
 
     function precionaEnter(event) { // função ao precionar a tecla enter
-        if(event.key === 'Enter'){ 
+        if(event.key === 'Enter' && verificaCampo(event.target.value) ){ 
             if(inEditando){
-                console.log("entrou");
                 novoNome(event.target.value);
                 renderiza()
                 input1.value="";
