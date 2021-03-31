@@ -1,6 +1,6 @@
 window.addEventListener('load', start); // adiciona evento para carregar a pagina primeiro
     var input1 = null; //declara a variavel para ter acesso dela fora da função
-    var lista = ["Danielle", "Rosilene", "Davilene", "Gabriel"]
+    var lista = ["Leitura Matinal"]
     var inEditando = null;
     var indexAtual = null;
 
@@ -47,6 +47,12 @@ function ativandoInput() {
 }
 
 function renderiza() {
+    function criaIconeEditar(params) {
+        var span = document.createElement(span)
+        span.classList.add("material-icons")
+        span.textContent = "draw"
+        return span
+    }
     function editandoNome(nome, index) {
         function editar() {
             indexAtual = index
@@ -55,18 +61,26 @@ function renderiza() {
             inEditando = true // ao apertar enter  ira entrar na condição de edição
         }
         var botaoEditar = document.createElement('button')
-        botaoEditar.textContent = "Editar"
+        var span = criaIconeEditar()
+        botaoEditar.appendChild(span)
         botaoEditar.addEventListener('click', editar)
         return botaoEditar;
     }
     function criaBotaoDelete(index) { // função que cria o botão passando o indice da li como parametro
+        function criaIconeDeletar(params) {
+            var span = document.createElement(span)
+            span.classList.add("material-icons")
+            span.textContent = "delete_outline"
+            return span
+        }
         function deletaNome() {
             lista.splice(index, 1); // remove 1 elemento do index passado ( cada index possui 1 li )
             renderiza(); // chama função para atualizar
         }
         var botao = document.createElement('button')
-        botao.textContent = "X"
         botao.classList.add("xis")
+        var span = criaIconeDeletar()
+        botao.appendChild(span)
         botao.addEventListener('click', deletaNome)
         return botao; 
     }
