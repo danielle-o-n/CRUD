@@ -1,8 +1,8 @@
 window.addEventListener('load', start); // adiciona evento para carregar a pagina primeiro
     var input1 = null; //declara a variavel para ter acesso dela fora da função
-    var lista = ["Leitura Matinal"]
     var inEditando = null;
     var indexAtual = null;
+    var lista = ["Leitura matinal"]
 
 function start () {
     console.log("ok");
@@ -90,11 +90,13 @@ function renderiza() {
     for (var i = 0; i< lista.length; i ++) { 
         var nome = lista[i];
         var li = document.createElement('li'); // cria li para cada nome
+        var divBotoes = document.createElement('div'); // cria div para botoes
         var botao = criaBotaoDelete(i); // botao é a função que retorna o botão ( passando o indice da li como parametro)
         li.textContent = nome;
-        li.appendChild(botao);
         var botaoEditar = editandoNome(nome , i); // passa nome e indice como parametros para a função
-        li.appendChild(botaoEditar)
+        divBotoes.appendChild(botao)
+        divBotoes.appendChild(botaoEditar)
+        li.appendChild(divBotoes)
         ul.appendChild(li)
     }
 
